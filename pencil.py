@@ -20,7 +20,9 @@ class Pencil():
             if text_to_write[index].isupper():
                 written_text += text_to_write[index]
                 self.pointDurability -= 2
-            else:
+            elif text_to_write[index].islower():
                 written_text += text_to_write[index]
                 self.pointDurability -= 1
+            elif text_to_write[index].isspace():
+                written_text += text_to_write[index]
         return written_text
