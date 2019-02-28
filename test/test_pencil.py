@@ -39,5 +39,11 @@ class TestPencil(unittest.TestCase):
         self.assertEqual(p.pointDurability, 39999)
         self.assertEqual(written_text, "a")
 
+    def test_write_two_lowercase_letter_decrease_point_durabilty_by_two(self):
+        p = Pencil(pencilLength=4, eraserDurability=4)
+        written_text = p.pencil_write(text_to_write="ab")
+        self.assertEqual(p.pointDurability, 39998)
+        self.assertEqual(written_text, "ab")
+
 if __name__ == '__main__':
     unittest.main()
