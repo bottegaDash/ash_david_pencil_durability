@@ -6,7 +6,7 @@ class TestPencil(unittest.TestCase):
         p = Pencil(pencilLength=4, eraserDurability=4)
         self.assertEqual(p.pencilLength, 4)
         self.assertEqual(p.eraserDurability, 4)
-        self.assertEqual(p.pointDurability, 4000)
+        self.assertEqual(p.pointDurability, 40000)
 
     def test_erase_one_letter_update_the_eraser_durability_have_an_empty_string_with_one_white_space(self):
         p = Pencil(pencilLength=4, eraserDurability=4)
@@ -32,6 +32,12 @@ class TestPencil(unittest.TestCase):
         erased_text = p.pencil_erase(text_to_erase='a ')
         self.assertEqual(p.eraserDurability, 3)
         self.assertEqual(erased_text, "  ")
+
+    def test_write_one_lowercase_letter_decrease_point_durabilty_by_one(self):
+        p = Pencil(pencilLength=4, eraserDurability=4)
+        written_text = p.pencil_write(text_to_write="a")
+        self.assertEqual(p.pointDurability, 39999)
+        self.assertEqual(written_text, "a")
 
 if __name__ == '__main__':
     unittest.main()
