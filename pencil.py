@@ -17,12 +17,14 @@ class Pencil():
     def pencil_write(self, text_to_write):
         written_text = ''
         for index in range(0, len(text_to_write)):
-            if text_to_write[index].isupper():
+            if text_to_write[index].isupper() and self.pointDurability > 0:
                 written_text += text_to_write[index]
                 self.pointDurability -= 2
-            elif text_to_write[index].islower():
+            elif text_to_write[index].islower() and self.pointDurability > 0:
                 written_text += text_to_write[index]
                 self.pointDurability -= 1
             elif text_to_write[index].isspace():
                 written_text += text_to_write[index]
+            elif self.pointDurability == 0:
+                written_text += ' '
         return written_text

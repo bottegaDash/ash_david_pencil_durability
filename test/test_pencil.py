@@ -69,5 +69,18 @@ class TestPencil(unittest.TestCase):
         self.assertEqual(p.pointDurability, 39999)
         self.assertEqual(written_text, "a ")
 
+    def test_write_max_point_durability(self):
+        p = Pencil(pencilLength=4, eraserDurability=4)
+        f = open('test/input/sample_input.txt', 'r')
+        input_text = f.read()
+        f.close()
+        f = open('test/input/sample_output.txt', 'r')
+        output_text = f.read()
+        f.close()
+        written_text = p.pencil_write(text_to_write=input_text)
+        self.assertEqual(p.pointDurability, 0)
+        self.assertEqual(written_text, output_text)
+
+
 if __name__ == '__main__':
     unittest.main()
