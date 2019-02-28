@@ -9,6 +9,7 @@ class Pencil():
     def pencil_erase(self, text_to_erase):
         for index in range(len(text_to_erase)-1, -1, -1):
             if self.eraserDurability > 0:
-                text_to_erase = text_to_erase[:index]+' '+text_to_erase[index+1:]
-                self.eraserDurability -= 1
+                if not text_to_erase[index].isspace():
+                    text_to_erase = text_to_erase[:index]+' '+text_to_erase[index+1:]
+                    self.eraserDurability -= 1
         return text_to_erase
