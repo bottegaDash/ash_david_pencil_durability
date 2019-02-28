@@ -17,6 +17,10 @@ class Pencil():
     def pencil_write(self, text_to_write):
         written_text = ''
         for index in range(0, len(text_to_write)):
-            written_text += text_to_write[index]
-            self.pointDurability -= 1
+            if text_to_write[index].isupper():
+                written_text += text_to_write[index]
+                self.pointDurability -= 2
+            else:
+                written_text += text_to_write[index]
+                self.pointDurability -= 1
         return written_text
