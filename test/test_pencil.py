@@ -8,5 +8,11 @@ class TestPencil(unittest.TestCase):
         self.assertEqual(p.eraserDurability, 4)
         self.assertEqual(p.pointDurability, 4000)
 
+    def test_erase_one_letter_update_the_eraser_durability_have_an_empty_string_with_one_white_space(self):
+        p = Pencil(pencilLength=4, eraserDurability=4)
+        erased_text = p.pencil_erase(text_to_erase='a')
+        self.assertEqual(p.eraserDurability, 3)
+        self.assertEqual(erased_text, " ")
+
 if __name__ == '__main__':
     unittest.main()
