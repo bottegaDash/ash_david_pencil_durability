@@ -5,7 +5,6 @@ class Pencil():
         self.eraserDurability = eraserDurability
         self.pointDurability = 40000
 
-
     def pencil_erase(self, text_to_erase):
         for index in range(len(text_to_erase)-1, -1, -1):
             if self.eraserDurability > 0:
