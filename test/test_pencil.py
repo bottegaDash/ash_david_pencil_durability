@@ -81,6 +81,13 @@ class TestPencil(unittest.TestCase):
         self.assertEqual(p.pointDurability, 0)
         self.assertEqual(written_text, output_text)
 
+    def test_sharpen_pencil_decrease_length_by_one(self):
+        p = Pencil(pencilLength=4, eraserDurability=4)
+        new_text = p.pencil_write('abcdef')
+        self.assertEqual(p.pointDurability, 39994)
+        p.pencil_sharpen()
+        self.assertEqual(p.pointDurability, 40000)
+        self.assertEqual(p.pencilLength, 3)
 
 if __name__ == '__main__':
     unittest.main()
