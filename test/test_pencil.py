@@ -20,7 +20,6 @@ class TestPencil(unittest.TestCase):
         self.assertEqual(p.eraserDurability, 2)
         self.assertEqual(erased_text, "  ")
 
-
     def test_erase_five_letters_with_eraser_durability_being_less_than_five_update_the_eraser_durability_to_have_a_string_with_one_letter_and_three_white_spaces(self):
         p = Pencil(pencilLength=4, eraserDurability=4)
         erased_text = p.pencil_erase(text_to_erase='abcde')
@@ -88,6 +87,16 @@ class TestPencil(unittest.TestCase):
         p.pencil_sharpen()
         self.assertEqual(p.pointDurability, 40000)
         self.assertEqual(p.pencilLength, 3)
+
+    def test_sharpen_pencil_by_five_decrease_length_by_four_set_pencil_durability_to_zero(self):
+        p = Pencil(pencilLength=4, eraserDurability=4)
+        p.pencil_sharpen()
+        p.pencil_sharpen()
+        p.pencil_sharpen()
+        p.pencil_sharpen()
+        p.pencil_sharpen()
+        self.assertEqual(p.pencilLength, 0)
+        self.assertEqual(p.pointDurability, 0)
 
 if __name__ == '__main__':
     unittest.main()

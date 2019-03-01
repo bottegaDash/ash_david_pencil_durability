@@ -30,5 +30,8 @@ class Pencil():
         return written_text
 
     def pencil_sharpen(self):
-        self.pencilLength -= 1
-        self.pointDurability = 40000
+        if self.pencilLength > 0:
+            self.pencilLength -= 1
+            self.pointDurability = 40000
+        else:
+            self.pointDurability = 0
