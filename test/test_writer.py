@@ -41,5 +41,12 @@ class TestWriter(unittest.TestCase):
         w.edit(index, 'onion')
         self.assertEqual(w.paper, "An onion a day keeps the doctor away")
 
+    def test_edit_replacec_apple_with_a_longer_word(self):
+        w = Write()
+        w.write_on_paper(desired_text_to_write="An apple a day keeps the doctor away")
+        index = w.erase('apple')
+        w.edit(index, 'artichoke')
+        self.assertEqual(w.paper, "An artich@k@ay keeps the doctor away")
+
 if __name__ == '__main__':
     unittest.main()

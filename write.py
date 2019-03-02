@@ -19,4 +19,12 @@ class Write():
         return index
 
     def edit(self, index, text_to_add):
-        self.paper = self.paper[:index] + text_to_add + self.paper[index+len(text_to_add):]
+        current_text = self.paper[index:index+len(text_to_add)]
+        for i in range(0, len(text_to_add)):
+            if current_text[i] != text_to_add[i]:
+                if not current_text[i].isspace() and not text_to_add[i].isspace():
+                    text_to_add = text_to_add[:i] + '@' + text_to_add[i+1:]
+                else:
+                    text_to_add = text_to_add[:i] + text_to_add[i] + text_to_add[i+1:]
+        text_to_write = self.pencil.pencil_write(text_to_add)
+        self.paper = self.paper[:index] + text_to_write + self.paper[index+len(text_to_add):]
