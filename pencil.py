@@ -1,5 +1,9 @@
 class Pencil():
 
+    POINT_DURABILITY_LOWER_CASE = 1
+    POINT_DURABILITY_UPPER_CASE = 2
+    POINT_DURABILITY_OTHER_CHARACTER = 1
+
     def __init__(self, pencilLength, eraserDurability):
         self.pencilLength = pencilLength
         self.eraserDurability = eraserDurability
@@ -16,16 +20,19 @@ class Pencil():
     def pencil_write(self, text_to_write):
         written_text = ''
         for index in range(0, len(text_to_write)):
-            if text_to_write[index].isupper() and self.pointDurability > 0:
+            if text_to_write[index].isspace():
                 written_text += text_to_write[index]
-                self.pointDurability -= 2
-            elif text_to_write[index].islower() and self.pointDurability > 0:
-                written_text += text_to_write[index]
-                self.pointDurability -= 1
-            elif text_to_write[index].isspace():
-                written_text += text_to_write[index]
-            elif self.pointDurability == 0:
+            elif self.pointDurability <= 0:
                 written_text += ' '
+            elif text_to_write[index].isupper():
+                written_text += text_to_write[index]
+                self.pointDurability -= self.POINT_DURABILITY_UPPER_CASE
+            elif text_to_write[index].islower():
+                written_text += text_to_write[index]
+                self.pointDurability -= self.POINT_DURABILITY_LOWER_CASE
+            else:
+                written_text += text_to_write[index]
+                self.pointDurability -= self.POINT_DURABILITY_OTHER_CHARACTER
         return written_text
 
     def pencil_sharpen(self):

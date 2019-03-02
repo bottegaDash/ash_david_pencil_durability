@@ -2,7 +2,7 @@ from pencil import Pencil
 
 class Write():
     def __init__(self):
-        self.pencil = Pencil(pencilLength = 4, eraserDurability = 4)
+        self.pencil = Pencil(pencilLength = 4, eraserDurability = 5)
         self.paper = ''
 
     def write_on_paper(self, desired_text_to_write):
@@ -11,3 +11,8 @@ class Write():
 
     def sharpen_pencil(self):
         self.pencil.pencil_sharpen()
+
+    def erase(self, desired_text_to_erase):
+        text_to_erase = self.pencil.pencil_erase(text_to_erase=desired_text_to_erase)
+        index = self.paper.rfind(desired_text_to_erase)
+        self.paper = self.paper[:index] + text_to_erase + self.paper[index+len(text_to_erase):]

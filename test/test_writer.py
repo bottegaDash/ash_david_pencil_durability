@@ -21,6 +21,11 @@ class TestWriter(unittest.TestCase):
         self.assertEqual(w.pencil.pointDurability, 40000)
         self.assertEqual(w.pencil.pencilLength, 3)
 
+    def test_sharpen_pencil_decrease_length_by_one(self):
+        w = Write()
+        w.write_on_paper(desired_text_to_write="How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
+        w.erase('chuck')
+        self.assertEqual(w.paper, "How much wood would a woodchuck chuck if a woodchuck could       wood?")
 
 if __name__ == '__main__':
     unittest.main()
