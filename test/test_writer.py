@@ -34,5 +34,12 @@ class TestWriter(unittest.TestCase):
         w.erase('chuck')
         self.assertEqual(w.paper, "How much wood would a woodchuck chuck if a wood      could       wood?")
 
+    def test_edit_replacec_apple_with_onion(self):
+        w = Write()
+        w.write_on_paper(desired_text_to_write="An apple a day keeps the doctor away")
+        index = w.erase('apple')
+        w.edit(index, 'onion')
+        self.assertEqual(w.paper, "An onion a day keeps the doctor away")
+
 if __name__ == '__main__':
     unittest.main()
