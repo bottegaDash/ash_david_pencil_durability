@@ -2,7 +2,7 @@ from pencil import Pencil
 
 class Write():
     def __init__(self):
-        self.pencil = Pencil(pencilLength = 4, eraserDurability = 5)
+        self.pencil = Pencil(pencilLength = 4, eraserDurability = 10)
         self.paper = ''
 
     def write_on_paper(self, desired_text_to_write):

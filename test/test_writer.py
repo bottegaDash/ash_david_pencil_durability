@@ -21,11 +21,18 @@ class TestWriter(unittest.TestCase):
         self.assertEqual(w.pencil.pointDurability, 40000)
         self.assertEqual(w.pencil.pencilLength, 3)
 
-    def test_sharpen_pencil_decrease_length_by_one(self):
+    def test_erase_word_the_last_occurance_of_the_word_should_be_repalced_by_spaces(self):
         w = Write()
         w.write_on_paper(desired_text_to_write="How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
         w.erase('chuck')
         self.assertEqual(w.paper, "How much wood would a woodchuck chuck if a woodchuck could       wood?")
+
+    def test_erase_word_the_last_and_second_to_last_occurance_of_the_string_the_word_should_be_repalced_by_spaces(self):
+        w = Write()
+        w.write_on_paper(desired_text_to_write="How much wood would a woodchuck chuck if a woodchuck could chuck wood?")
+        w.erase('chuck')
+        w.erase('chuck')
+        self.assertEqual(w.paper, "How much wood would a woodchuck chuck if a wood      could       wood?")
 
 if __name__ == '__main__':
     unittest.main()
